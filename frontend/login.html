@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Royal <span>Aroma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <div class="auth-area" id="authArea"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <form class="auth-card" id="loginForm">
+      <h1>Welcome Back</h1>
+      <p style="color:var(--muted);margin-bottom:18px">Sign in to order and track your meals.</p>
+      <div class="form-error" id="formError"></div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-gold" type="submit" style="width:100%">Login</button>
+      <p style="margin-top:16px;text-align:center">New guest? <a href="register.html" style="color:var(--gold)">Create Account</a></p>
+    </form>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

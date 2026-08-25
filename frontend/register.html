@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Royal <span>Aroma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <div class="auth-area" id="authArea"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <form class="auth-card" id="registerForm">
+      <h1>Create Account</h1>
+      <p style="color:var(--muted);margin-bottom:18px">Join Royal Aroma to place orders.</p>
+      <div class="form-error" id="formError"></div>
+      <div class="alert success" id="formSuccess"></div>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" minlength="6" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" minlength="6" required>
+      </div>
+      <button class="btn btn-gold" type="submit" style="width:100%">Create Account</button>
+      <p style="margin-top:16px;text-align:center">Already registered? <a href="login.html" style="color:var(--gold)">Login</a></p>
+    </form>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

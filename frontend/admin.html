@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="admin-side">
+      <a class="logo" href="index.html" style="display:block;margin-bottom:20px">Royal <span>Aroma</span></a>
+      <button class="nav-link active" type="button" data-panel="dashboard">Dashboard</button>
+      <button class="nav-link" type="button" data-panel="users">Users</button>
+      <button class="nav-link" type="button" data-panel="menu">Menu</button>
+      <button class="nav-link" type="button" data-panel="orders">Orders</button>
+      <a href="index.html">View Website</a>
+    </aside>
+    <section class="admin-main">
+      <div class="admin-top">
+        <h1 id="panelTitle">Dashboard</h1>
+        <div class="auth-area" id="authArea"></div>
+      </div>
+
+      <div class="form-error" id="adminError"></div>
+      <div class="alert success" id="adminSuccess"></div>
+
+      <div class="panel active" id="dashboard">
+        <div class="stat-grid">
+          <article class="stat-card"><span>Total Users</span><strong id="statUsers">0</strong></article>
+          <article class="stat-card"><span>Total Menu Items</span><strong id="statMenu">0</strong></article>
+          <article class="stat-card"><span>Total Orders</span><strong id="statOrders">0</strong></article>
+          <article class="stat-card"><span>Total Revenue</span><strong id="statRevenue">₹0</strong></article>
+        </div>
+      </div>
+
+      <div class="panel" id="users">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr><th>Name</th><th>Email</th><th>Registration Date</th></tr>
+            </thead>
+            <tbody id="usersTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" id="menu">
+        <form class="admin-form" id="menuForm">
+          <input type="hidden" id="menuId">
+          <div class="form-group">
+            <label>Name</label>
+            <input id="itemName" required>
+          </div>
+          <div class="form-group">
+            <label>Price (₹)</label>
+            <input id="itemPrice" type="number" min="1" required>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="itemCategory" required>
+              <option>Starters</option>
+              <option>Indian Main Course</option>
+              <option>Punjabi</option>
+              <option>Gujarati</option>
+              <option>Italian</option>
+              <option>Chinese</option>
+              <option>Desserts</option>
+              <option>Drinks</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Image path or URL</label>
+            <input id="itemImage" placeholder="/images/dhokla.svg" required>
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="itemDescription" rows="2" required></textarea>
+          </div>
+          <div class="full">
+            <button class="btn btn-gold" type="submit">Save Menu Item</button>
+            <button class="btn btn-outline" type="button" id="resetMenuForm">Clear Form</button>
+          </div>
+        </form>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr><th>Item</th><th>Category</th><th>Price</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="menuTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" id="orders">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Royal <span>Aroma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <div class="auth-area" id="authArea"></div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1 class="hero-title" style="font-size:3.2rem">Vegetarian Menu</h1>
+    <p style="color:var(--muted)">Starters, regional Indian plates, world flavours, desserts and family drinks</p>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search dishes and drinks..." style="width:100%;margin-top:18px;background:#0d0b09;border:1px solid var(--border);color:var(--cream);border-radius:999px;padding:12px 18px;">
+    </div>
+    <div class="filters" id="categoryFilters"></div>
+  </section>
+
+  <main class="container" style="padding-bottom:60px">
+    <div class="menu-grid" id="menuGrid"></div>
+    <p class="empty-state" id="emptyMenu" style="display:none">No dishes match your search.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Royal Aroma</h3>
+        <p>Pure vegetarian luxury dining.</p>
+      </div>
+      <div>
+        <h3>Visit</h3>
+        <p>14 Heritage Lane, C.G. Road, Ahmedabad</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <a href="mailto:hello@royalaroma.com">hello@royalaroma.com</a>
+      </div>
+      <div>
+        <h3>Hours</h3>
+        <p>12:00 pm – 11:00 pm</p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Royal Aroma. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

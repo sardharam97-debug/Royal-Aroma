@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Royal <span>Aroma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="active cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <div class="auth-area" id="authArea"></div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1 class="hero-title" style="font-size:3rem">Your Cart</h1>
+  </section>
+
+  <main class="container cart-layout">
+    <div>
+      <div id="cartItems"></div>
+      <p class="empty-state" id="emptyCart">Your cart is empty. Browse the menu to add vegetarian dishes and drinks.</p>
+      <button class="btn btn-outline" id="clearCartBtn" type="button">Clear Cart</button>
+    </div>
+    <aside class="summary-card">
+        <h2>Order Summary</h2>
+        <div class="summary-row"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+        <div class="summary-row"><span>Service</span><span>₹0</span></div>
+        <div class="summary-row total"><span>Total</span><span id="total">₹0</span></div>
+
+        <!-- Delivery Address Section -->
+        <div class="delivery-card" style="background: #1e1e1e; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #333;">
+          <h3 style="color: #d4af37; margin-bottom: 12px; font-size: 16px;">📍 Delivery Location</h3>
+          
+          <div style="margin-bottom: 12px;">
+            <button type="button" id="detectLocationBtn" style="background: #d4af37; color: #000; padding: 8px 12px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%;">
+              📍 Use My Live GPS Location
+            </button>
+            <p id="locStatus" style="font-size: 12px; color: #aaa; margin-top: 6px;"></p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <input type="text" id="custName" placeholder="Full Name *" required style="padding: 8px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px;">
+            <input type="tel" id="custPhone" placeholder="10-Digit Mobile Number *" pattern="[0-9]{10}" required style="padding: 8px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px;">
+            <input type="text" id="custFlat" placeholder="Flat / House No. *" required style="padding: 8px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px;">
+            <textarea id="custAddress" rows="2" placeholder="Full Address / Landmark *" required style="padding: 8px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px;"></textarea>
+            <input type="text" id="custInstructions" placeholder="Delivery Instructions (Optional)" style="padding: 8px; background: #2a2a2a; border: 1px solid #444; color: #fff; border-radius: 4px;">
+            
+            <input type="hidden" id="custLat">
+            <input type="hidden" id="custLng">
+          </div>
+        </div>
+
+        <button class="btn btn-gold" id="checkoutBtn" type="button" style="width: 100%; margin-top: 10px;">Proceed to Checkout</button>
+        <p id="checkoutMsg" class="form-error" style="margin-top: 12px;"></p>
+      </aside>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

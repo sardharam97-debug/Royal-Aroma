@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Royal <span>Aroma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <div class="auth-area" id="authArea"></div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1 class="hero-title" style="font-size:3rem">My Orders</h1>
+  </section>
+
+  <main class="container" style="padding-bottom:60px">
+    <div id="ordersList"></div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script>
+    (async function () {
+      const user = RoyalAroma.getUser();
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+      const box = document.getElementById("ordersList");
+      try {
+        const data = await RoyalAroma.api("/api/orders/my");
+        if (!data.orders.length) {
+          box.innerHTML = '<p class="empty-state">You have not placed an order yet.</p>';
+          return;
+        }
+        box.innerHTML = data.orders.map(function (order) {
+          const items = order.items.map(function (item) {
+            return "<li>" + item.name + " × " + item.quantity + "</li>";
+          }).join("");
+          return (
+            '<article class="info-box" style="margin-bottom:16px">' +
+              "<h3 style='color:var(--gold)'>Order " + String(order._id).slice(-8).toUpperCase() + "</h3>" +
+              "<p>Date: " + new Date(order.orderDate).toLocaleString() + "</p>" +
+              "<p>Status: " + order.status + "</p>" +
+              "<ul>" + items + "</ul>" +
+              "<p class='price'>Total: ₹" + order.totalAmount + "</p>" +
+            "</article>"
+          );
+        }).join("");
+      } catch (error) {
+        box.innerHTML = '<p class="empty-state">' + error.message + "</p>";
+      }
+    })();
+  </script>
+</body>
+</html>

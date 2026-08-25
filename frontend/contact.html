@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Royal Aroma</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Royal <span>Aroma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <div class="auth-area" id="authArea"></div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1 class="hero-title" style="font-size:3.2rem">Contact</h1>
+    <p style="color:var(--muted)">We would be honoured to host you</p>
+  </section>
+
+  <main class="container split" style="padding-bottom:70px">
+    <div class="info-box">
+      <h2 style="color:var(--gold);margin-bottom:12px">Royal Aroma</h2>
+      <p><strong>Address</strong><br>14 Heritage Lane, C.G. Road,<br>Ahmedabad, Gujarat 380009</p>
+      <p style="margin-top:12px"><strong>Phone</strong><br><a href="tel:+917922001144">+91 79 2200 1144</a></p>
+      <p style="margin-top:12px"><strong>Email</strong><br><a href="mailto:hello@royalaroma.com">hello@royalaroma.com</a></p>
+      <p style="margin-top:12px"><strong>Opening Hours</strong><br>Monday to Sunday<br>Lunch 12:00 pm – 3:30 pm<br>Dinner 7:00 pm – 11:00 pm</p>
+    </div>
+    <form class="info-box" id="contactForm">
+      <h2 style="color:var(--gold);margin-bottom:12px">Send a Message</h2>
+      <div class="form-error" id="formError"></div>
+      <div class="alert success" id="formSuccess"></div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button class="btn btn-gold" type="submit">Send Message</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">© 2026 Royal Aroma. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const errorBox = document.getElementById("formError");
+      const successBox = document.getElementById("formSuccess");
+      errorBox.classList.remove("show");
+      successBox.classList.remove("show");
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (name.length < 2) {
+        errorBox.textContent = "Please enter your name.";
+        errorBox.classList.add("show");
+        return;
+      }
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        errorBox.textContent = "Please enter a valid email address.";
+        errorBox.classList.add("show");
+        return;
+      }
+      if (message.length < 10) {
+        errorBox.textContent = "Message should be at least 10 characters.";
+        errorBox.classList.add("show");
+        return;
+      }
+
+      try {
+        const result = await RoyalAroma.api("/api/contact", {
+          method: "POST",
+          body: JSON.stringify({ name, email, message })
+        });
+        successBox.textContent = result.message;
+        successBox.classList.add("show");
+        event.target.reset();
+      } catch (error) {
+        errorBox.textContent = error.message;
+        errorBox.classList.add("show");
+      }
+    });
+  </script>
+</body>
+</html>
